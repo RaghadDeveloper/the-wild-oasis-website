@@ -1,14 +1,14 @@
 import { Metadata } from "next";
-import CabinCard from "../_components/CabinCard";
-import { Cabin } from "../_types";
+
+import { Suspense } from "react";
+import Spinner from "../_components/Spinner";
+import CabinList from "../_components/CabinList";
 
 export const metadata: Metadata = {
   title: "Cabins",
 };
 
 const Cabins = () => {
-  const cabins: Cabin[] = [];
-
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -23,13 +23,9 @@ const Cabins = () => {
         to paradise.
       </p>
 
-      {cabins.length > 0 && (
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
-          {cabins.map((cabin) => (
-            <CabinCard cabin={cabin} key={cabin.id} />
-          ))}
-        </div>
-      )}
+      <Suspense fallback={<Spinner />}>
+        <CabinList />
+      </Suspense>
     </div>
   );
 };

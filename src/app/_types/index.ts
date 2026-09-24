@@ -4,26 +4,40 @@ export interface Cabin {
   maxCapacity: number;
   regularPrice: number;
   discount: number;
+  description?: string;
   image: string;
+  created_at?: string;
 }
 
 export interface Booking {
   id: number;
-  guestId: number;
+  created_at: string;
   startDate: string;
   endDate: string;
   numNights: number;
-  totalPrice: number;
   numGuests: number;
+  cabinPrice: number;
+  extrasPrice: number;
+  totalPrice: number;
   status: string;
-  created_at: string;
-  cabins: {
-    name: string;
-    image: string;
-  };
+  hasBreakfast: boolean;
+  isPaid: boolean;
+  observations: string;
+  cabinId: number;
+  guestId: number;
 }
 
 export interface Country {
   name: string;
   flag: string;
+}
+
+export interface Guest {
+  id: number;
+  fullName: string;
+  email: string;
+  nationalID: string;
+  nationality: string;
+  countryFlag: string;
+  created_at: string;
 }
