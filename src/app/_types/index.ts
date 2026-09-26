@@ -25,6 +25,7 @@ export interface Booking {
   observations: string;
   cabinId: number;
   guestId: number;
+  cabins: Cabin;
 }
 
 export interface Country {
