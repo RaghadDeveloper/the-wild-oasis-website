@@ -15,11 +15,11 @@ const SelectCountry = async ({
   className,
 }: SelectCountryProps) => {
   const data = await getCountries();
-  const countries = data.objects ?? [];
-  console.log("countries", countries);
+  const countries = data.data.objects;
   const flag =
-    countries?.find((country: Country) => country.name === defaultCountry)
-      ?.flag ?? "";
+    countries?.find(
+      (country: Country) => country.names.common === defaultCountry,
+    )?.flag.url_png ?? "";
 
   return (
     <select
@@ -29,9 +29,9 @@ const SelectCountry = async ({
       className={className}
     >
       <option value="">Select country...</option>
-      {countries.map((c: Country) => (
-        <option key={c.name} value={`${c.name}%${c.flag}`}>
-          {c.name}
+      {countries?.map((c: Country) => (
+        <option key={c.names.common} value={`${c.names.common}%${c.flag}`}>
+          {c.names.common}
         </option>
       ))}
     </select>

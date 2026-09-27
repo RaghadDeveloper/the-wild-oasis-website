@@ -1,14 +1,20 @@
 import { Metadata } from "next";
-
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
 import CabinList from "../_components/CabinList";
+import Filter from "../_components/Filter";
 
 export const metadata: Metadata = {
   title: "Cabins",
 };
 
-const Cabins = () => {
+const Cabins = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const filter = ((await searchParams).capacity as string) ?? "all";
+
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -23,8 +29,12 @@ const Cabins = () => {
         to paradise.
       </p>
 
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
+
+      <Suspense fallback={<Spinner />} key={filter}>
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );

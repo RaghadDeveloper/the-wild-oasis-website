@@ -29,7 +29,9 @@ export interface Booking {
 }
 
 export interface Country {
-  name: string;
+  names: {
+    common: string;
+  };
   flag: string;
 }
 
