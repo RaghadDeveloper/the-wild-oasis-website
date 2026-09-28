@@ -44,3 +44,8 @@ export interface Guest {
   countryFlag: string;
   created_at: string;
 }
+
+export interface Settings {
+  minBookingLength: number;
+  maxBookingLength: number;
+}
