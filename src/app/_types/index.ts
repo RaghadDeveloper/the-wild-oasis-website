@@ -1,3 +1,13 @@
+import { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      guestId: number | undefined;
+    } & DefaultSession["user"];
+  }
+}
+
 export interface Cabin {
   id: number;
   name: string;
@@ -36,13 +46,13 @@ export interface Country {
 }
 
 export interface Guest {
-  id: number;
+  id?: number;
   fullName: string;
   email: string;
-  nationalID: string;
-  nationality: string;
-  countryFlag: string;
-  created_at: string;
+  nationalID?: string;
+  nationality?: string;
+  countryFlag?: string;
+  created_at?: string;
 }
 
 export interface Settings {
