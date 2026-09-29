@@ -34,7 +34,6 @@ const DateSelector = ({
 
   const { minBookingLength, maxBookingLength } = settings;
 
-  console.log("range", range);
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
