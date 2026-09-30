@@ -30,7 +30,10 @@ const SelectCountry = async ({
     >
       <option value="">Select country...</option>
       {countries?.map((c: Country) => (
-        <option key={c.names.common} value={`${c.names.common}%${c.flag}`}>
+        <option
+          key={c.names.common}
+          value={`${c.names.common}%${c.flag.url_png}`}
+        >
           {c.names.common}
         </option>
       ))}

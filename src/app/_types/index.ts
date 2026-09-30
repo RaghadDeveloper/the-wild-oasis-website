@@ -42,7 +42,9 @@ export interface Country {
   names: {
     common: string;
   };
-  flag: string;
+  flag: {
+    url_png: string;
+  };
 }
 
 export interface Guest {
