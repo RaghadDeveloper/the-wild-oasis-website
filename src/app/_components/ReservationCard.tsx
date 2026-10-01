@@ -10,7 +10,13 @@ export const formatDistanceFromNow = (dateStr: string) =>
     addSuffix: true,
   }).replace("about ", "");
 
-const ReservationCard = ({ booking }: { booking: Booking }) => {
+const ReservationCard = ({
+  booking,
+  onDelete,
+}: {
+  booking: Booking;
+  onDelete: (bookingId: number) => void;
+}) => {
   const {
     id,
     guestId,
@@ -80,7 +86,7 @@ const ReservationCard = ({ booking }: { booking: Booking }) => {
               <PencilSquareIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors" />
               <span className="mt-1">Edit</span>
             </Link>
-            <DeleteReservation bookingId={id} />
+            <DeleteReservation bookingId={id} onDelete={onDelete} />
           </>
         )}
       </div>
