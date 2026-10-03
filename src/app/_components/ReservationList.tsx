@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteReservation } from "../_lib/actions";
+import { deleteBooking } from "../_lib/actions";
 import { Booking } from "../_types";
 import ReservationCard from "./ReservationCard";
 import { useOptimistic } from "react";
@@ -15,7 +15,7 @@ const ReservationList = ({ bookings }: { bookings: Booking[] }) => {
 
   const handleDelete = async (bookingId: number) => {
     optimisticDelete(bookingId);
-    await deleteReservation(bookingId);
+    await deleteBooking(bookingId);
   };
 
   return (

@@ -60,7 +60,7 @@ const ReservationCard = ({
           {format(new Date(startDate), "EEE, MMM dd yyyy")} (
           {isToday(new Date(startDate))
             ? "Today"
-            : formatDistanceFromNow(startDate)}
+            : formatDistanceFromNow(String(startDate))}
           ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
 
